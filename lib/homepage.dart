@@ -105,7 +105,6 @@ class _HomeViewState extends State<HomeView> {
               SizedBox(
                 height: 20,
               ),
-              SingleChildScrollView(),
               Container(
                 height: 230,
                 child: ListView.builder(

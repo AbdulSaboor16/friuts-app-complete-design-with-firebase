@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruitproject/data.dart';
+import 'package:fruitproject/productdetail/places_order.dart';
 
 class CartView extends StatefulWidget {
   const CartView({super.key});
@@ -124,7 +125,6 @@ class _CartViewState extends State<CartView> {
                                       // setState(() {
                                       //   cartItem.removeAt(index);
                                       // });
-                                        
                                     },
                                     icon: Icon(Icons.clear)),
                               ),
@@ -133,7 +133,9 @@ class _CartViewState extends State<CartView> {
                                 height: 50,
                                 alignment: Alignment.centerRight,
                                 child: Text(
-                                    "\$ ${cartItem[index]["price"] * cartItem[index]["qty"]}",style: TextStyle(fontSize: 20),),
+                                  "\$ ${cartItem[index]["price"] * cartItem[index]["qty"]}",
+                                  style: TextStyle(fontSize: 20),
+                                ),
                               ),
                             ],
                           )),
@@ -143,6 +145,308 @@ class _CartViewState extends State<CartView> {
               ],
             );
           }),
+      bottomNavigationBar: Material(
+        color: Color.fromRGBO(83, 177, 117, 1),
+        child: InkWell(
+          onTap: () {
+            showModalBottomSheet(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  // <-- SEE HERE
+                  topLeft: Radius.circular(10.0),
+                  topRight: Radius.circular(10.0),
+                ),
+              ),
+              context: context,
+              builder: (context) {
+                return Wrap(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                              left: 10,
+                            ),
+                            child: Text(
+                              "Checked",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            width: 50,
+                            alignment: Alignment.centerRight,
+                            margin: EdgeInsets.only(
+                              right: 10,
+                            ),
+                            child: IconButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon: Icon(Icons.clear)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                              left: 15,
+                            ),
+                            child: Text("Delivery"),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            margin: EdgeInsets.only(right: 10, left: 5),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      "Select Method",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 50,
+                                  alignment: Alignment.centerRight,
+                                  margin: EdgeInsets.only(right: 10, left: 5),
+                                  child: Icon(Icons.arrow_forward_ios_rounded),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                              left: 15,
+                            ),
+                            child: Text("Pament"),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            margin: EdgeInsets.only(right: 10, left: 5),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    alignment: Alignment.centerRight,
+                                    child:
+                                        Image.asset("assets/images/card.png"),
+                                  ),
+                                ),
+                                Container(
+                                  height: 50,
+                                  alignment: Alignment.centerRight,
+                                  margin: EdgeInsets.only(right: 10, left: 5),
+                                  child: Icon(Icons.arrow_forward_ios_rounded),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                              left: 15,
+                            ),
+                            child: Text("Promo Code"),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            margin: EdgeInsets.only(right: 10, left: 5),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      "Pick discount",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 50,
+                                  alignment: Alignment.centerRight,
+                                  margin: EdgeInsets.only(right: 10, left: 5),
+                                  child: Icon(Icons.arrow_forward_ios_rounded),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                              left: 15,
+                            ),
+                            child: Text("Total Cost"),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            margin: EdgeInsets.only(right: 10, left: 5),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      "\$13.97",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 50,
+                                  alignment: Alignment.centerRight,
+                                  margin: EdgeInsets.only(right: 10, left: 5),
+                                  child: Icon(Icons.arrow_forward_ios_rounded),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(right: 10, left: 15),
+                            child: Text(
+                                "By placing an order you agree to our Terms And Conditions"),
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(left: 15),
+                            child: Text("Home"),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.centerRight,
+                            margin: EdgeInsets.only(right: 15),
+                            child: Text("Profile"),
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 50,
+                            margin: EdgeInsets.only(right: 15, left: 15),
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const PlacesOrder()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromRGBO(83, 177, 117, 1),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                ),
+                                child: Text("Place Order")),
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 40,
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                );
+              },
+            );
+          },
+          child: const SizedBox(
+            height: kToolbarHeight,
+            width: double.infinity,
+            child: Center(
+              child: Text(
+                'Go to checkout',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

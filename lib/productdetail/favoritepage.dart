@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fruitproject/data.dart';
-import 'package:fruitproject/widget/favouriteproductpage.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -105,11 +104,124 @@ class _FavoritePageState extends State<FavoritePage> {
         color: Color.fromRGBO(83, 177, 117, 1),
         child: InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const FavouriteProductPage()),
-            );
+            showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (_) => AlertDialog(
+                      // title: Text("No user found for that email."),
+                       shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 50,
+                                      alignment: Alignment.centerLeft,
+                                      child: IconButton(
+                                          onPressed: () {
+                                             Navigator.pop(context);
+                                          },
+                                          icon: Icon(
+                                            Icons.clear,
+                                            color: Colors.black,
+                                          )),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height: 150,
+                                      width: 200,
+                                      alignment: Alignment.center,
+                                      child:
+                                          Image.asset("assets/images/imag.png"),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height: 70,
+                                      width: 220,
+                                      alignment: Alignment.center,
+                                      child: Text("Oops! Order Failed",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black)),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 220,
+                                      alignment: Alignment.topCenter,
+                                      child: Text(
+                                          "Something went tembly wrong.",
+                                          style: TextStyle(
+                                              fontSize: 10,
+                                              color: Colors.black)),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                        height: 50,
+                                        width: 220,
+                                        alignment: Alignment.center,
+                                        decoration: BoxDecoration(
+                                            color:
+                                                Color.fromRGBO(83, 177, 117, 1),
+                                            borderRadius:
+                                                BorderRadius.circular(15.0)),
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            "Please Try Again",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.white),
+                                          ),
+                                        )),
+                                  ],
+                                ),
+                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 220,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                          "Back to home",
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black)),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ))
+                      ],
+                    ));
           },
           child: const SizedBox(
             height: kToolbarHeight,
